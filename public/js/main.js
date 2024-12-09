@@ -1,6 +1,6 @@
 const fetchOffersData = async () => {
     try {
-      const response = await fetch("/api/offers");
+      const response = await fetch("/offers");
       if (!response.ok) {
         throw new Error("Failed to fetch offers");
       }
@@ -11,7 +11,8 @@ const fetchOffersData = async () => {
       console.error("Error fetching offers:", error);
     }
   };
-  
+
+
   const displayOffers = (offersData) => {
     const offersContainer = document.getElementById("offersContainer");
     offersContainer.innerHTML = ""; 
@@ -29,20 +30,21 @@ const fetchOffersData = async () => {
   
        
       const title = document.createElement("p");
-      title.textContent = `Title: ${offer.title}`;
+      title.textContent = offer.title;
       offerDiv.appendChild(title);
   
       const description = document.createElement("p");
-      description.textContent = `Description: ${offer.description}`;
+      description.textContent = offer.description;
       offerDiv.appendChild(description);
   
       const price = document.createElement("p");
-      price.textContent = `Price: $${offer.price}`;
+      price.textContent = `Price: ${offer.price} €`;
       offerDiv.appendChild(price);
   
       offersContainer.appendChild(offerDiv);
     });
   };
+  
   
   document.getElementById("offerForm").addEventListener("submit", async function (event) {
     event.preventDefault();

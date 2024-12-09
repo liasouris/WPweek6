@@ -46,7 +46,7 @@ router.post("/upload", upload.single("image"), async (req: Request, res: Respons
   }
 });
 
-router.get("/api/offers", async (req: Request, res: Response): Promise<void> => {
+router.get("/offers", async (req: Request, res: Response): Promise<void> => {
     try {
       const offers = await Offer.find().populate("imageId"); 
 

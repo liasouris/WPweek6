@@ -42,7 +42,7 @@ router.post("/upload", multer_config_1.default.single("image"), async (req, res)
         res.status(500).json({ message: "Internal server error" });
     }
 });
-router.get("/api/offers", async (req, res) => {
+router.get("/offers", async (req, res) => {
     try {
         const offers = await Offer_1.Offer.find().populate("imageId");
         const formattedOffers = offers.map((offer) => {
